@@ -3,11 +3,20 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic','ngCordova'])
+var app = angular.module('starter', ['ionic','ngCordova']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
+
+      bluetoothSerial.isEnabled(function(){
+        console.log("Is Enabled");
+      },function(){
+        bluetoothSerial.enable();
+      });
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -21,4 +30,5 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
+
 })

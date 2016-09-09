@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+ion-content{
+  background: #1565c0;
+  background: -webkit-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* Standard syntax */
+}
