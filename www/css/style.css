@@ -6,3 +6,86 @@ ion-content{
   background: -moz-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* Standard syntax */
 }
+
+.naveguimo{
+  background: url('../img/nave_guimo.png') no-repeat center center;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  position:absolute;
+  width: 100%;
+  height: 100px;
+  top:450px;
+  animation: naveanimada 5s linear;
+}
+
+.planeta{
+  background: url(../img/mundo.png) no-repeat center center;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  width: 100%;
+  height: 150px;
+  position:absolute;
+  top:150px;
+  right: 100px;
+}
+
+.astronauta{
+  background: url('../img/astronauta.png') no-repeat center center;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  position:absolute;
+  width: 100%;
+  height: 100px;
+  right: 75px;
+  top:70px;
+  -webkit-animation: astroanimado 1s linear infinite alternate;
+  animation: astroanimado 1s linear infinite alternate;
+}
+
+@-webkit-keyframes astroanimado{
+  0% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px)
+  }
+  100% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px)
+  }
+}
+@keyframes astroanimado {
+  0% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px)
+  }
+  100% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px)
+  }
+}
+.amarelo{
+  width:100%;
+  height: 100%;
+  background: #fff176;
+  border:3px dashed #000;
+  border-radius: 30px;
+  opacity:0.95;
+}
+
+.verde{
+  width:100%;
+  height: 100%;
+  background: #26a69a;
+  border:3px dashed #000;
+  border-radius: 30px;
+  opacity:0.95;
+}
+
+.verde a{
+  margin:0 auto;
+}
