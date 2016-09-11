@@ -5,6 +5,17 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic','ngCordova']);
 
+app.config(function($stateProvider,$urlRouterProvider){
+    $stateProvider
+          .state('home',{
+            url:'/',
+            templateUrl:'templates/home.html',
+            controller:'HomeController'
+          });
+
+    $urlRouterProvider.otherwise('/');
+})
+
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 

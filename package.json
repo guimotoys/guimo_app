@@ -1,7 +1,7 @@
 {
   "name": "guimo",
-  "version": "1.1.1",
-  "description": "Guimo: An Ionic project",
+  "version": "0.3.14",
+  "description": "Guimo App",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -20,7 +20,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-bluetooth-serial"
   ],
   "cordovaPlatforms": []
 }
