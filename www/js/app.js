@@ -7,13 +7,13 @@ var app = angular.module('starter', ['ionic','ngCordova']);
 
 app.config(function($stateProvider,$urlRouterProvider){
     $stateProvider
-          .state('home',{
-            url:'/',
-            templateUrl:'templates/home.html',
-            controller:'HomeController'
+          .state('menu',{
+            url:'/menu',
+            templateUrl:'templates/menu.html',
+            controller:'MenuController'
           });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/menu');
 })
 
 app.run(function($ionicPlatform) {
