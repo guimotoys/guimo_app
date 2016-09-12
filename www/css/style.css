@@ -1,10 +1,10 @@
 /* Empty. Add your own CSS if you like */
 ion-content{
   background: #1565c0;
-  background: -webkit-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#64b5f6, #0d47a1, #64b5f6); /* Standard syntax */
+  background: -webkit-linear-gradient(#424242, #0d47a1, #424242); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#424242, #0d47a1, #424242); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#424242, #0d47a1, #424242); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#424242, #0d47a1, #424242); /* Standard syntax */
 }
 
 .naveguimo{
@@ -33,6 +33,19 @@ ion-content{
   right: 100px;
 }
 
+.terra{
+  background: url('../img/terra.png') no-repeat center;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  width:180px;
+  height:180px;
+  position:absolute;
+  left:220px;
+  top:250px;
+}
+
 .astronauta{
   background: url('../img/astronauta.png') no-repeat center center;
   background-size: contain;
@@ -46,6 +59,17 @@ ion-content{
   top:70px;
   -webkit-animation: astroanimado 1s linear infinite alternate;
   animation: astroanimado 1s linear infinite alternate;
+}
+.estrelas{
+  background:url('../img/estrelas.png') no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  width: 1000px;
+  height: 600px;
+  position:absolute;
+
 }
 
 @-webkit-keyframes astroanimado{
@@ -74,7 +98,7 @@ ion-content{
   background: #fff176;
   border:3px dashed #000;
   border-radius: 30px;
-  opacity:0.95;
+  opacity:0.90;
 }
 
 .verde{
@@ -83,7 +107,7 @@ ion-content{
   background: #26a69a;
   border:3px dashed #000;
   border-radius: 30px;
-  opacity:0.95;
+  opacity:0.90;
 }
 
 .verde a{
