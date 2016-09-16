@@ -1,7 +1,8 @@
 app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform){
-
+  $scope.energia = 10;
+  
   $ionicPlatform.ready(function(){
-    $scope.energia = 10;
+
     $rootScope.connected = false;
 
     bluetoothSerial.isEnabled(function(){
