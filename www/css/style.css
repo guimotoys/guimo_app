@@ -143,6 +143,11 @@ ion-content{
 .item{
   opacity: 1;
 }
+.spinner svg {
+  stroke: #fff;
+  fill: #fff;
+}
+
 .item p{
   color:#000;
   font-weight: bold;

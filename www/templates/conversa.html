@@ -1,9 +1,37 @@
-<ion-view title="Conversa">
+<ion-view title="Guimo | Conversando...">
   <ion-content>
     <div class="estrelas animated zoomIn"></div>
     <div class="astronauta animated"></div>
     <div class="planeta animated shake"></div>
     <div class="naveguimo animated fadeInLeft"></div>
     <div class="terra animated bounce"></div>
+
+    <div class="row">
+      <div class="col">
+        <div class="list">
+          <a class="item item-icon-right" ng-click="conversar(0,4)">
+            Como você está?
+            <i class="icon ion-help animated tada"></i>
+          </a>
+
+          <a class="item item-icon-right" ng-click="conversar(5,9)">
+            De onde você veio?
+            <i class="icon ion-help animated tada"></i>
+          </a>
+
+          <a class="item item-icon-right" ng-click="conversar(10,14)">
+            Quer fazer algo?
+            <i class="icon ion-help animated tada"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <ion-spinner icon="lines" class="balanced" ng-show="respondendo" ng-hide="!respondendo"></ion-spinner>
+        <span ng-show="!respondendo" ng-hide="respondendo">{{resposta}}</span>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
