@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 ion-content{
-  background: #1565c0;
+  background: #424242;
   background: -webkit-linear-gradient(#424242, #0d47a1, #424242); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#424242, #0d47a1, #424242); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#424242, #0d47a1, #424242); /* For Firefox 3.6 to 15 */
@@ -16,8 +16,7 @@ ion-content{
   position:absolute;
   width: 100%;
   height: 100px;
-  top:450px;
-  animation: naveanimada 5s linear;
+  top:350px;
 }
 
 .planeta{
@@ -159,27 +158,6 @@ ion-content{
 }
 
 .guimo-animado{
-  -webkit-animation: guimoanimado 1s linear alternate infinite;
-  animation: guimoanimado 1s linear alternate infinite;
-}
-
-@-webkit-keyframes guimoanimado{
-  0% {
-    -webkit-transform: translateY(5px);
-    transform: translateY(5px)
-  }
-  100% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px)
-  }
-}
-@keyframes guimoanimado {
-  0% {
-    -webkit-transform: translateY(5px);
-    transform: translateY(5px)
-  }
-  100% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px)
-  }
+  -webkit-animation: astroanimado 1s linear alternate infinite;
+  animation: astroanimado 1s linear alternate infinite;
 }
