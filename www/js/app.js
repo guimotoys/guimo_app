@@ -11,6 +11,10 @@ app.config(function($stateProvider,$urlRouterProvider){
             url:'/menu',
             templateUrl:'templates/menu.html',
             controller:'MenuController'
+          })
+          .state('conversa',{
+            templateUrl:'templates/conversa.html',
+            controller:'ConversaController'
           });
 
     $urlRouterProvider.otherwise('/menu');

@@ -1,19 +1,22 @@
-app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform){
+app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ionicHistory){
   $scope.energia = 10;
-  
+
   $ionicPlatform.ready(function(){
 
-    $rootScope.connected = false;
+    if(window.cordova){
+      $rootScope.connected = false;
 
-    bluetoothSerial.isEnabled(function(){
-      },function(){
-        bluetoothSerial.enable();
-    });
+      bluetoothSerial.isEnabled(function(){
+        },function(){
+          bluetoothSerial.enable();
+      });
 
-    bluetoothSerial.isConnected(function(){
-        $rootScope.$apply(function(){$rootScope.connected = true})
-      },function(){
-    });
+      bluetoothSerial.isConnected(function(){
+          $rootScope.$apply(function(){$rootScope.connected = true})
+        },function(){
+      });
+    }
 
+    $rootScope.back = function(){$ionicHistory.goBack();}
   });
 });

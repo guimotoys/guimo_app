@@ -25,10 +25,19 @@
 
     <script src="js/Controllers/MenuController.js" charset="utf-8"></script>
     <script src="js/Controllers/GuimoController.js" charset="utf-8"></script>
+    <script src="js/Controllers/ConversaController.js" charset="utf-8"></script>
   </head>
   <body ng-app="guimoapp">
 
-    <div ui-view></div>
+    <!--<div ui-view></div>-->
+    <ion-nav-bar class="bar-positive" title="Guimo">
+      <ion-nav-back-button class="button-clear">
+        <i class="icon ion-chevron-left"></i>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view animation="slide-left-right">
+      <!-- Center content -->
+    </ion-nav-view>
 
     <ion-footer-bar align-title="center" class="bar-positive" ng-controller="GuimoController">
       <div class="buttons">
@@ -36,9 +45,9 @@
         <button class="button button-balanced icon-center ion-bluetooth animated shake " ng-show="!connected" ng-hide="connected"> Encontrar Guimo </button>
       </div>
       <h1 class="title"></h1>
-      <div class="buttons" ng-click="doSomething()">
+      <div class="buttons">
         <button class="button button-energized icon-left ion-flash"> 50%</button>
-        <button class="button button-assertive icon-right ion-heart" style="margin-left:10px;"> 100%</button>
+        <button class="button button-assertive icon-left ion-heart" style="margin-left:10px;"> 100%</button>
         <button class="button button-royal icon-right ion-android-restaurant" style="margin-left:10px;"> {{energia}}% </button>
       </div>
     </ion-footer-bar>
