@@ -15,8 +15,6 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
           $rootScope.$apply(function(){$rootScope.connected = true})
         },function(){
       });
-    }
-
-    $rootScope.back = function(){$ionicHistory.goBack();}
+  }
   });
 });
