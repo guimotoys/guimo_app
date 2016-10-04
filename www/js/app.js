@@ -15,6 +15,10 @@ app.config(function($stateProvider,$urlRouterProvider){
           .state('conversa',{
             templateUrl:'templates/conversa.html',
             controller:'ConversaController'
+          })
+          .state('alimentar',{
+            templateUrl:'templates/alimentar.html',
+            controller:'AlimentarController'
           });
 
     $urlRouterProvider.otherwise('/menu');

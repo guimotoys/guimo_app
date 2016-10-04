@@ -166,3 +166,33 @@ ion-content{
   -webkit-animation: astroanimado 1s linear alternate infinite;
   animation: astroanimado 1s linear alternate infinite;
 }
+
+.slider {
+  height:50vh;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+.button.ng-hide{
+  display:none;
+}
+
+#hamburguer{
+  width: 64px;
+  height: 106px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+}
+
+#icecream{
+  width: 64px;
+  height: 106px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+}
