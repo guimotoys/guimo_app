@@ -1,18 +1,22 @@
 app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$ionicHistory,$timeout){
-  $scope.respostas = ['Um','Dois','Três','Quatro','Cinco','Seis','Sete','Oito','Nove','Dez','Onze','Doze','Treze','Quatorze'];
+  $scope.awsers = ['Um','Dois','Três','Quatro','Cinco','Seis','Sete','Oito','Nove','Dez','Onze','Doze','Treze','Quatorze','Quinze'];
   $ionicPlatform.ready(function(){
-    $scope.resposta = '';
-    $scope.respondendo = false;
+    $scope.awser = '';
+    $scope.awsering = false;
+    $scope.awsered = false;
     if(window.cordova){
 
     }
 
     $scope.conversar = function(min,max){
-      $scope.respondendo = true;
+      $scope.awsering = true;
+      //Enviar Comando Bluetooth Aqui //
+
       $timeout(function(){
-        $scope.respondendo = false;
+        $scope.awsering = false;
+        $scope.awsered = true;
         var rand = Math.floor(Math.random() * (max - min + 1)) + min;
-        $scope.resposta = $scope.respostas[rand];
+        $scope.awser = $scope.awsers[rand];
         console.log(rand);
       },3000);
     }

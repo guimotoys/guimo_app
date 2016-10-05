@@ -29,9 +29,27 @@
 
     <div class="row">
       <div class="col text-center">
-        <ion-spinner icon="lines" class="balanced" ng-show="respondendo" ng-hide="!respondendo"></ion-spinner>
-        <span ng-show="!respondendo" ng-hide="respondendo">{{resposta}}</span>
+        <ion-spinner icon="lines" class="balanced" ng-show="awsering"></ion-spinner>
       </div>
+    </div>
+
+    <div class="row" ng-show="awsered">
+        <div class="col">
+            <div class="list card">
+            <div class="item item-avatar">
+              <img src="img/logo_guimo_50px.png" class="guimo-animado">
+              <h2>Guimo  </h2>
+              <p>
+                Resposta:
+              </p>
+            </div>
+            <div class="item item-text-wrap">
+              <p>
+                {{awser}}
+              </p>
+            </div>
+          </div>
+        </div>
     </div>
   </ion-content>
 </ion-view>

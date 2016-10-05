@@ -9,19 +9,36 @@
     <div class="row">
         <div class="col">
           <div class="button-bar">
-            <a class="button button-outline button-positive">
-              <img src="img/hamburguer.png" alt="Hamburguer" id="hamburguer" />
-            </a>
-            <a class="button button-outline button-positive"><img src="img/icecream.png" alt="icecream" id="icecream" /></a>
+            <a class="button button-outline button-royal" ng-click="feed('Hamburguer')"><img src="img/hamburguer.png" alt="Hamburguer" id="hamburguer" /></a>
+            <a class="button button-outline button-royal" ng-click="feed('Sorvete')"><img src="img/sorvete.png" alt="sorvete" id="sorvete" /></a>
           </div>
         </div>
     </div>
 
+    <div class="row" ng-show="health <= 25">
+          <div class="col">
+            <button class="button button-block button-assertive icon-left ion-medkit" ng-click="medkit()">
+                Remédio Estrelar
+            </button>
+          </div>
+    </div>
+
+    <!-- DEBUG DIVS -->
     <div class="row">
       <div class="col">
-
+          <p class="light text-center">
+            teste
+          </p>
       </div>
     </div>
+    <!--DEBUG DIVS -->
+
+    <div class="row">
+      <div class="col">
+          <img src="img/hamburguer.png" alt="Alimento" ng-show="feeding" ng-src={{foodSelected}} />
+      </div>
+    </div>
+
 
 
   </ion-content>
