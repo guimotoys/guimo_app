@@ -1,4 +1,8 @@
-<ion-view title="Guimo">
+<ion-header-bar align-title="left" class="bar-positive">
+  <h1 class="title">Guimo</h1>
+</ion-header-bar>
+
+<ion-pane>
   <ion-content>
     <div class="estrelas animated zoomIn"></div>
     <div class="astronauta animated"></div>
@@ -28,7 +32,7 @@
       </div>
 
       <div class="col col-50">
-          <div class="rosa rounded-border-3x-black text-center animated bounceIn" ng-click="alerta('Prog Blocos')">
+          <div class="rosa rounded-border-3x-black text-center animated bounceIn" ui-sref="blockly">
               <a href="#" class="balanced icon-big"><i class="icon ion-code-working "></i></a>
           </div>
       </div>
@@ -39,8 +43,11 @@
             <div class="list card">
             <div class="item item-avatar">
               <img src="img/logo_guimo_50px.png" class="guimo-animado">
-              <h2>Guimo ainda não foi encontrado </h2>
-              <p>Encontre o guimo através do <i class="icon ion-bluetooth"></i></p>
+              <h2 ng-show="!connected">Guimo ainda não foi encontrado </h2>
+              <p ng-show="!connected">Encontre o guimo através do <i class="icon ion-bluetooth"></i></p>
+
+              <h2 ng-show="connected">Guimo foi encontrado </h2>
+              <p ng-show="connected">Estou pronto para brincar</p>
             </div>
           </div>
         </div>
@@ -55,5 +62,4 @@
 
     </div>
   </ion-content>
-
-</ion-view>
+</ion-pane>

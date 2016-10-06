@@ -4,9 +4,7 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
     $scope.awser = '';
     $scope.awsering = false;
     $scope.awsered = false;
-    if(window.cordova){
 
-    }
 
     $scope.conversar = function(min,max){
       $scope.awsering = true;
@@ -17,7 +15,7 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
         $scope.awsered = true;
         var rand = Math.floor(Math.random() * (max - min + 1)) + min;
         $scope.awser = $scope.awsers[rand];
-        console.log(rand);
+
       },3000);
     }
 

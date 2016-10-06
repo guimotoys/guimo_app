@@ -13,11 +13,23 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+    <!-- BLOCKLY JSs -->
+    <script src="lib/blockly/blockly_compressed.js"></script>
+    <script src="lib/blockly/blocks_compressed.js"></script>
+    <script src="lib/blockly/javascript_compressed.js"></script>
+    <script src="lib/blockly/msg/js/pt-br.js" charset="utf-8"></script>
+    <script src="js/custom_blocks.js" charset="utf-8"></script>
+    <script src="lib/blockly/generators/javascript/guimo.js" charset="utf-8"></script>
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.min.js" charset="utf-8"></script>
+
+
+
+
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -27,23 +39,20 @@
     <script src="js/Controllers/GuimoController.js" charset="utf-8"></script>
     <script src="js/Controllers/ConversaController.js" charset="utf-8"></script>
     <script src="js/Controllers/AlimentarController.js" charset="utf-8"></script>
+    <script src="js/Controllers/BlocklyController.js" charset="utf-8"></script>
+
+
   </head>
   <body ng-app="guimoapp">
 
-    <!--<div ui-view></div>-->
-    <ion-nav-bar class="bar-positive" title="Guimo">
-      <ion-nav-back-button class="button-clear">
-        <i class="icon ion-chevron-left"></i>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-nav-view animation="slide-left-right">
-      <!-- Center content -->
-    </ion-nav-view>
+
+    <div ui-view>
+
+    </div>
 
     <ion-footer-bar align-title="center" class="bar-positive" ng-controller="GuimoController">
       <div class="buttons">
-        <button class="button button-light icon-center ion-bluetooth animated shake " ng-show="connected" ng-hide="!connected"></button>
-        <button class="button button-balanced icon-center ion-bluetooth animated shake " ng-show="!connected" ng-hide="connected"> Encontrar Guimo </button>
+        <button class="button button-balanced icon-center ion-bluetooth animated shake " ng-show="!connected" ng-hide="connected" ng-click="conectarBt('guimo')"> Encontrar Guimo </button>
       </div>
       <h1 class="title"></h1>
       <div class="buttons">
