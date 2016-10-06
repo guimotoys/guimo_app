@@ -15,10 +15,19 @@
     <div class="row">
         <div class="col">
           <div class="button-bar">
-            <a class="button button-outline button-royal" ng-click="feed('Hamburguer')"><img src="img/hamburguer.png" alt="Hamburguer" id="hamburguer" /></a>
-            <a class="button button-outline button-royal" ng-click="feed('Sorvete')"><img src="img/sorvete.png" alt="sorvete" id="sorvete" /></a>
+            <a class="button button-outline button-royal" ng-click="feed('guimoHamburguer','Hamburgers')"><img src="img/hamburguer.png" alt="Hamburguer" id="hamburguer" /></a>
+            <a class="button button-outline button-royal" ng-click="feed('guimoSuco','Sucos')"><img src="img/suco.png" alt="Suco" id="suco" /></a>
           </div>
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="button-bar">
+          <a class="button button-outline button-royal" ng-click="feed('guimoMaca','Maças')"><img src="img/apple.gif" alt="Maca" id="maca" /></a>
+          <a class="button button-outline button-royal" ng-click="feed('guimoRefrigerante','Refris')"><img src="img/soda.png" alt="Refri" id="refri" /></a>
+        </div>
+      </div>
     </div>
 
     <div class="row" ng-show="health <= 25">

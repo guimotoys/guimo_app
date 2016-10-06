@@ -52,7 +52,10 @@
 
     <ion-footer-bar align-title="center" class="bar-positive" ng-controller="GuimoController">
       <div class="buttons">
-        <button class="button button-balanced icon-center ion-bluetooth animated shake " ng-show="!connected" ng-hide="connected" ng-click="conectarBt('guimo')"> Encontrar Guimo </button>
+        <button class="button button-balanced" ng-show="!connected" ng-click="conectarBt('guimo')" ng-disabled="connecting">
+           <span ng-show="!connecting"> <i class="icon ion-bluetooth" class="balanced"></i> Encontrar Guimo</span>
+          <span ng-show="connecting"><ion-spinner icon="lines" class="balanced"></ion-spinner></span>
+        </button>
       </div>
       <h1 class="title"></h1>
       <div class="buttons">

@@ -6,7 +6,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
     $scope.sick = false;
 
 
-    $scope.feed = function(food){
+    $scope.feed = function(food,foodName){
 
       if($rootScope.hunger >= 100){
         $ionicPopup.alert({
@@ -18,6 +18,12 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
        if($rootScope.hunger < 100){
          var lucky = Math.floor(Math.random()*100)+1;
          var amt_feed = Math.floor(Math.random()*5)+1;
+
+         if($rootScope.connected ){
+           console.log('entrou Alimentar '+food);
+           bluetoothSerial.write(food+'\n');
+         }
+
          if(lucky >= 40 && lucky <= 60){
             if($rootScope.health > 25){
                 $rootScope.health -= 2;
@@ -25,14 +31,17 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
             }else if($rootScope.health > 1 && $rootScope.health <= 25){
 
               if(!$scope.sick){
-                $scope.sick = true; //Seta a variavel para dizer que o app já sabe que o guimo tá doente;
-                
-                 //Enviar string de doente via bluetooth
+                $scope.sick = true;
+                //Seta a variavel para dizer que o app já sabe que o guimo tá doente;
+                 if($rootScope.connected){
+                   console.log("entrou guimoDoente");
+                   blutoothSerial.write('guimoDoente\n');
+                 }
               }
 
               $ionicPopup.alert({
                   title:'Guimo diz:',
-                  template: 'Esses '+food+'s não me cairam bem.... =/'
+                  template: 'Esses '+foodName+'s não me cairam bem.... =/'
               });
 
                 $rootScope.health -= 1;
@@ -57,9 +66,14 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
         if($rootScope.health + heal > 100){
           $rootScope.health = 100;
           templ = "Ahhh esse remédio me curou totalmente, estou pronto para brincar denovo!!";
+
         }else{
           $rootScope.health += heal;
           templ = "Legal, esse remédio curou "+heal+" pontos de minha vida!";
+        }
+
+        if($rootScope.connected){
+          bluetoothSerial.write('guimoRemedio\n');
         }
 
         $ionicPopup.alert({

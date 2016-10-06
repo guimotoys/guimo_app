@@ -32,17 +32,21 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
 
   if(window.cordova){
 
+
     $scope.runCode = function(){
       var workspace = document.getElementById('BlocklyDiv');
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       $scope.codes = code.split(",");
       var i = 0;
-      var tam = $scope.codes.length;
-      console.log($scope.codes);
+      var tam = $scope.codes.length - 1;
+
+
       $interval(function(){
-        bluetoothSerial.write($scope.codes[i]);
+        if($rootScope.connected){
+          bluetoothSerial.write($scope.codes[i]);
+        }
         i++;
-      },1000,tam);
+      },900,tam);
 
     };
   }

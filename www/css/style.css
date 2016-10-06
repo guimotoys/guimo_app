@@ -201,3 +201,24 @@ ion-content{
   margin-bottom: -10px;
   margin-top:10px;
 }
+
+#maca{
+  width: 106px;
+  height: 96px;
+  margin-bottom: -10px;
+  margin-top:10px;
+}
+
+#refri{
+  width: 50px;
+  height: 90px;
+  margin-bottom: -10px;
+  margin-top:10px;
+}
+
+#suco{
+  width: 35px;
+  height: 90px;
+  margin-bottom: -10px;
+  margin-top:10px;
+}
