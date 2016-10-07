@@ -9,14 +9,21 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
     $scope.conversar = function(min,max){
       $scope.awsering = true;
       //Enviar Comando Bluetooth Aqui //
+      var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+      var str = rand+"\n";
+      console.log("conversa =>" + str);
+      if($rootScope.connected){
+        bluetoothSerial.write(str);
+      }
 
       $timeout(function(){
         $scope.awsering = false;
         $scope.awsered = true;
-        var rand = Math.floor(Math.random() * (max - min + 1)) + min;
         $scope.awser = $scope.awsers[rand];
-
-      },3000);
+        if($rootScope.connected){
+          bluetoothSerial.write('padrao\n');
+        }
+      },5000);
     }
 
 

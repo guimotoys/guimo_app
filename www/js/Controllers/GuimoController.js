@@ -66,7 +66,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
         if($rootScope.connected){
           console.log('entrou guimoFome');
-          bluetoothSerial.write('guimoFome\n');
+          bluetoothSerial.write('fome\n');
         }
 
         $ionicPopup.alert({
