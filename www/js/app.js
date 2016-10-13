@@ -20,6 +20,10 @@ app.config(function($stateProvider,$urlRouterProvider){
             templateUrl:'templates/alimentar.html',
             controller:'AlimentarController'
           })
+          .state('telas',{
+              templateUrl:'templates/telas.html',
+              controller:'TelasController'
+          })
           .state('blockly',{
             templateUrl:'templates/blockly.html',
             controller:'BlocklyController'
