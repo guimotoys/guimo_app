@@ -27,7 +27,11 @@ app.config(function($stateProvider,$urlRouterProvider){
           .state('blockly',{
             templateUrl:'templates/blockly.html',
             controller:'BlocklyController'
-          });
+          })
+          .state('controlar',{
+            templateUrl:'templates/controlar.html',
+            controller:'ControlarController'
+          })
 
     $urlRouterProvider.otherwise('/menu');
 })
