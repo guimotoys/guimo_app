@@ -11,7 +11,6 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
       //Enviar Comando Bluetooth Aqui //
       var rand = Math.floor(Math.random() * (max - min + 1)) + min;
       var str = rand+"\n";
-      console.log("conversa =>" + str);
       if($rootScope.connected){
         bluetoothSerial.write(str);
       }
