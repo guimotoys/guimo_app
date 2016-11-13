@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="toys.guimo.guimov2" version="0.3.13" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Guimo v2</name>
-  <description>&#xD;
-        Guimo
+  <description>&#xD;&#xD;
+        Guimo&#xD;
     </description>
   <author email="jorgedjr21@gmail.com" href="http://guimo.toys">&#xD;      Guimo&#xD;    </author>
   <content src="index.html"/>
