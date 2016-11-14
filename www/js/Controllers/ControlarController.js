@@ -18,14 +18,7 @@ app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$
         limitStickTravel: true,
         stickRadius: 100
 			});
-
-			joystick.addEventListener('touchStart', function(){
-				console.log('down')
-			})
-			joystick.addEventListener('touchEnd', function(){
-				console.log('up')
-			})
-
+      
 			$interval(function(){
 
 				console.log('Result:'
