@@ -78,8 +78,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
           if(fomeInterval != null){
             $interval.cancel(fomeInterval);
-          }
-          
+          }  
       });
 
     }
