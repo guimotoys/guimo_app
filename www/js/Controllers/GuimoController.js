@@ -4,6 +4,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
   $rootScope.hunger = 100;
   $scope.device = '';
   $scope.connecting = false;
+  var fomeInterval = null;
 
   $ionicPlatform.ready(function(){
 
@@ -25,13 +26,6 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
           bluetoothSerial.enable();
       });
 
-      /*SE BT JÁ TIVER CONECTADO, NÃO MOSTRA OPÇÃO DE CONECTAR */
-      bluetoothSerial.isConnected(function(){
-          $rootScope.$apply(function(){$rootScope.connected = true});
-        },function(){
-          $rootScope.$apply(function(){$rootScope.connected = false});
-      });
-
       /**CONECTAR NO BT DO GUIMO **/
       $scope.conectarBt = function(device_name){
         $scope.connecting = true;
@@ -49,6 +43,24 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
           bluetoothSerial.connect($scope.device.address,function(){
               $scope.connecting = false;
               $rootScope.connected = true;
+
+              fomeInterval = $interval(function(){
+                                  $rootScope.hunger -= 1;
+                                  if($rootScope.hunger < 10){
+
+                                    if($rootScope.connected){
+                                      console.log('entrou guimoFome');
+                                      bluetoothSerial.write('fome\n');
+                                    }
+
+                                    $ionicPopup.alert({
+                                        title:'Guimo diz:',
+                                        template: "Estou com fome, que tal se nós fossemos comer algo?"
+                                    });
+                                  }
+
+                                },2500);
+
           },function(err){
             $scope.connecting = false;
             console.log(err);
@@ -58,25 +70,39 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
       }
 
+      /*SE BT JÁ TIVER CONECTADO, NÃO MOSTRA OPÇÃO DE CONECTAR */
+      bluetoothSerial.isConnected(function(){
+          $rootScope.$apply(function(){$rootScope.connected = true});
+        },function(){
+          $rootScope.$apply(function(){$rootScope.connected = false});
+
+          if(fomeInterval != null){
+            $interval.cancel(fomeInterval);
+          }
+          
+      });
+
     }
 
-    $interval(function(){
-      $rootScope.hunger -= 1;
-      if($rootScope.hunger < 10){
+    /*if($rootScope.connected){
+        $interval(function(){
+          $rootScope.hunger -= 1;
+          if($rootScope.hunger < 10){
 
-        if($rootScope.connected){
-          console.log('entrou guimoFome');
-          bluetoothSerial.write('fome\n');
-        }
+            if($rootScope.connected){
+              console.log('entrou guimoFome');
+              bluetoothSerial.write('fome\n');
+            }
 
-        $ionicPopup.alert({
-            title:'Guimo diz:',
-            template: "Estou com fome, que tal se nós fossemos comer algo?"
-        });
-      }
+            $ionicPopup.alert({
+                title:'Guimo diz:',
+                template: "Estou com fome, que tal se nós fossemos comer algo?"
+            });
+          }
 
-    },5000);
-
+        },2500);
+    }*/
+    
 
   });
 

@@ -4,6 +4,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
     $scope.feeding = false;
     $scope.foodSelected = "";
     $scope.sick = false;
+    var telaFood = "padrao\n";
 
 
     $scope.feed = function(food,foodName){
@@ -14,22 +15,21 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
             title:'Guimo diz:',
             template: "Ei, não estou com fome... que tal se fossemos brincar?"
         });
-      }
-
-      /**ALIMENTA SE TIVER COM FOME **/
-       if($rootScope.hunger < 100){
-         var telaFood = "padrao\n";
+      }else {
+        /**ALIMENTA SE TIVER COM FOME **/
          /**CALCULA A SORTE DE DIMINUIR A VIDA **/
          var lucky = Math.floor(Math.random()*100)+1;
          var amt_feed = Math.floor(Math.random()*5)+1;
-
+         
          if($rootScope.connected ){
            console.log('entrou Alimentar'+food);
            bluetoothSerial.write(food);
            if($rootScope.hunger < 10){
              telaFood = "fome\n";
            }
-           $timeout(function(){bluetoothSerial.write(telaFood)},3500);
+
+           //bluetoothSerial.write(telaFood);
+           //$timeout(function(){bluetoothSerial.write(telaFood)},3500);
 
          }
 
@@ -55,10 +55,10 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
          }
 
          /**SE A SORTE FOR ENTRE 40 a 60, DIMINUI SAUDE**/
-         if(lucky >= 40 && lucky <= 60){
+         if(lucky >= 40 && lucky <= 80){
             /** SE SAUDE > 25, PERDE 2 de VIDA **/
             if($rootScope.health > 25){
-                $rootScope.health -= 2;
+                $rootScope.health -= amt_feed;
 
             }else if($rootScope.health > 1 && $rootScope.health <= 25){
 
