@@ -2,9 +2,11 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
   $scope.energia = 10;
   $rootScope.health = 100;
   $rootScope.hunger = 100;
+  $rootScope.telaFood = "padrao\n";
   $scope.device = '';
   $scope.connecting = false;
-  var fomeInterval = null;
+  $rootScope.teste = null;
+  var functionsInterval = null;
 
   $ionicPlatform.ready(function(){
 
@@ -17,7 +19,8 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
       /*INSCREVE PARA RECEBER DADOS DO BT **/
       bluetoothSerial.subscribe('\n', function(data){
-        console.log(data);
+       // $rootScope.teste = "Teste " + data;
+       console.log(data);
       });
 
       /*SE BT NAO TIVER LIGADO, PEDE PARA LIGAR **/
@@ -44,22 +47,35 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
               $scope.connecting = false;
               $rootScope.connected = true;
 
-              fomeInterval = $interval(function(){
-                                  $rootScope.hunger -= 1;
-                                  if($rootScope.hunger < 10){
+              functionsInterval = $interval(function(){
+                if($rootScope.hunger > 1){
+                  $rootScope.hunger -= 2;
+                }
 
-                                    if($rootScope.connected){
-                                      console.log('entrou guimoFome');
-                                      bluetoothSerial.write('fome\n');
-                                    }
+                if($rootScope.hunger <= 10){
+                  
+                  
+                  if($rootScope.telaFood != "fome\n"){
+                    console.log('entrou guimoFome');  
+                    $rootScope.telaFood = "fome\n";
+                    bluetoothSerial.write('fome\n');
+                  }
+                
+                /*$ionicPopup.alert({
+                    title:'Guimo diz:',
+                    template: "Estou com fome, que tal se nós fossemos comer algo?"
+                });*/
+                }
 
-                                    $ionicPopup.alert({
-                                        title:'Guimo diz:',
-                                        template: "Estou com fome, que tal se nós fossemos comer algo?"
-                                    });
-                                  }
+                if($rootScope.hunger > 10){
+                  if($rootScope.telaFood == "fome\n"){
+                    console.log('entrou semFome');
+                    $rootScope.telaFood = "padrao\n";
+                    bluetoothSerial.write("padrao\n")
+                  }
+                }
 
-                                },2500);
+            },2500);
 
           },function(err){
             $scope.connecting = false;
@@ -74,11 +90,14 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
       bluetoothSerial.isConnected(function(){
           $rootScope.$apply(function(){$rootScope.connected = true});
         },function(){
-          $rootScope.$apply(function(){$rootScope.connected = false});
-
-          if(fomeInterval != null){
-            $interval.cancel(fomeInterval);
-          }  
+          $rootScope.$apply(
+            function(){
+            $rootScope.connected = false;
+            if(functionsInterval != null){
+              $interval.cancel(functionsInterval);
+              functionsInterval = null;
+            }
+          });
       });
 
     }

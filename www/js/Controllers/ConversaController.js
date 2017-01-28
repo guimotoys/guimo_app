@@ -12,6 +12,7 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
       var rand = Math.floor(Math.random() * (max - min + 1)) + min;
       var str = rand+"\n";
       if($rootScope.connected){
+        console.log(str);
         bluetoothSerial.write(str);
       }
 
@@ -23,6 +24,7 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
           bluetoothSerial.write('padrao\n');
         }
       },5000);
+
     }
 
 

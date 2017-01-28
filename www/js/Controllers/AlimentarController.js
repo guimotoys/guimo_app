@@ -4,11 +4,15 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
     $scope.feeding = false;
     $scope.foodSelected = "";
     $scope.sick = false;
-    var telaFood = "padrao\n";
+    var telaFood = $rootScope.telaFood;
 
+    if($rootScope.teste != null){
+      $scope.foodSelected = $rootScope.teste;
+    }
 
     $scope.feed = function(food,foodName){
       $scope.foodSelected = foodName;
+      telaFood = $rootScope.telaFood;
       /** NÃO ALIMENTA SE O GUIMO ESTIVER CHEIO **/
       if($rootScope.hunger >= 100){
         $ionicPopup.alert({
@@ -19,33 +23,30 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
         /**ALIMENTA SE TIVER COM FOME **/
          /**CALCULA A SORTE DE DIMINUIR A VIDA **/
          var lucky = Math.floor(Math.random()*100)+1;
-         var amt_feed = Math.floor(Math.random()*5)+1;
+         var amt_feed =  20 //Math.floor(Math.random()*5)+1;
          
          if($rootScope.connected ){
            console.log('entrou Alimentar'+food);
            bluetoothSerial.write(food);
-           if($rootScope.hunger < 10){
-             telaFood = "fome\n";
-           }
+           var media = new Media("/android_asset/www/sound_effects/Bite3.mp3",function(){
+             console.log('mediaSuccess')
+            },function(err){
+              console.log(err)
+            });
+           
+           $timeout(function(){
+             media.play();
+             
+           },1100);
+           $timeout(function(){
+             media.play();
+           },2200)
 
-           //bluetoothSerial.write(telaFood);
-           //$timeout(function(){bluetoothSerial.write(telaFood)},3500);
+          $timeout(function(){
+            bluetoothSerial.write(telaFood);
+            media.release();
+          },3500);
 
-         }
-
-         /** SE GUIMO COM SAUDE > 25, VOLTA PRA TELA PADRÃO APÓS 3500 ms, SE NÃO, VAI PARA DOENTE**/
-         if($rootScope.health > 25){
-           if($rootScope.connected){
-             $timeout(function(){
-               bluetoothSerial.write('padrao\n');
-             },3500);
-           }
-         }else{
-           if($rootScope.connected){
-             $timeout(function(){
-               bluetoothSerial.write('doente\n');
-             },3500);
-           }
          }
 
          if($rootScope.hunger + amt_feed > 100){
@@ -70,15 +71,14 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
               if(!$scope.sick){
                 $scope.sick = true;
                 //Seta a variavel para dizer que o app já sabe que o guimo tá doente;
-                 if($rootScope.connected){
-                   console.log("entrou guimoDoente");
-                   bluetoothSerial.write('doente\n');
-                 }
+                 
+                console.log("entrou guimoDoente");
+                bluetoothSerial.write('doente\n');
+                 
               }
                 $rootScope.health -= 1;
             }
          }
-
        }
     }
 
