@@ -10,7 +10,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
       $scope.foodSelected = $rootScope.teste;
     }
 
-    $scope.feed = function(food,foodName){
+    $scope.feed = function(food,foodName,sound){
       $scope.foodSelected = foodName;
       telaFood = $rootScope.telaFood;
       /** NÃO ALIMENTA SE O GUIMO ESTIVER CHEIO **/
@@ -26,25 +26,29 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
          var amt_feed =  20 //Math.floor(Math.random()*5)+1;
          
          if($rootScope.connected ){
+           var media = null;
            console.log('entrou Alimentar'+food);
            bluetoothSerial.write(food);
-           var media = new Media("/android_asset/www/sound_effects/Bite3.mp3",function(){
+           if(sound != null){
+             media = new Media("/android_asset/www/sound_effects/"+sound+".mp3",function(){
              console.log('mediaSuccess')
             },function(err){
               console.log(err)
             });
            
-           $timeout(function(){
-             media.play();
-             
-           },1100);
-           $timeout(function(){
-             media.play();
-           },2200)
-
+            $timeout(function(){
+              media.play();
+            },1100);
+            $timeout(function(){
+              media.play();
+            },2200);
+           }
+           
           $timeout(function(){
             bluetoothSerial.write(telaFood);
-            media.release();
+            if(media instanceof Media){
+              media.release();
+            }
           },3500);
 
          }
