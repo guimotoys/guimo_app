@@ -1,13 +1,25 @@
-app.controller('MenuController',function($scope,$rootScope,$ionicPlatform,$http){
+app.controller('MenuController',function($scope,$rootScope,$ionicPlatform,$http,$ionicPopup,$state,$ionicLoading){
     $ionicPlatform.ready(function(){
+      var contClicks = 0;
       $scope.position = null;
       $scope.forecasts = [];
       if(window.cordova) {
         screen.lockOrientation('portrait');
+        if(navigator.connection.type != "none" || navigator.connection.type != "unknown" );
+        {
+          console.log(navigator.connection.type);
+          navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+        }
         window.addEventListener('resize', onresize, false);
       }
 
-      navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+      $scope.menuSecreto = function(qtd){
+        contClicks++;
+        if(contClicks >= qtd){
+          contClicks = 0;
+          $state.go('secreto');
+        }
+      }
 
       $scope.alerta = function(cod){
         alert(cod);
@@ -20,7 +32,6 @@ app.controller('MenuController',function($scope,$rootScope,$ionicPlatform,$http)
              .then(function(response){
                 $scope.forecasts = response.data;
                 var dateTime = new Date($scope.forecasts[0].fcst_valid_local);
-                console.log(dateTime);
                 console.log($scope.forecasts);
              });
       }

@@ -1,4 +1,4 @@
-app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ionicPopup,$interval,$state){
+app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ionicPopup,$interval,$state, $ionicLoading){
   $scope.energia = 10;
   $rootScope.health = 100;
   $rootScope.hunger = 100;

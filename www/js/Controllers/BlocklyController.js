@@ -4,28 +4,6 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
   $ionicPlatform.ready(function(){
       window.addEventListener('resize', onresize, false);
 
-      if(window.cordova){
-        screen.lockOrientation('landscape');
-
-        $scope.runCode = function(){
-          var workspace = document.getElementById('BlocklyDiv');
-          var code = Blockly.JavaScript.workspaceToCode(workspace);
-          $scope.codes = code.split(",");
-          var i = 0;
-          var tam = $scope.codes.length - 1;
-
-
-          $interval(function(){
-            if($rootScope.connected){
-              bluetoothSerial.write($scope.codes[i]);
-            }
-            i++;
-          },900,tam);
-
-        };
-
-      }
-
       var blocklyArea = document.getElementById('blocklyArea');
       var blocklyDiv = document.getElementById('blocklyDiv');
       var workspace = Blockly.inject(blocklyDiv, {toolbox: document.getElementById('toolbox')});
@@ -46,6 +24,29 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
         blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
         blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
       };
+
+      if(window.cordova){
+        screen.lockOrientation('landscape');
+
+        $scope.runCode = function(){
+          var workspace = document.getElementById('BlocklyDiv');
+          var code = Blockly.JavaScript.workspaceToCode(workspace);
+          $scope.codes = code.split(",");
+          var i = 0;
+          var tam = $scope.codes.length - 1;
+
+
+          $interval(function(){
+            if($rootScope.connected){
+              bluetoothSerial.write($scope.codes[i]);
+            }
+            i++;
+          },110,tam);
+
+        };
+
+      }
+
   });
 
 });

@@ -32,11 +32,15 @@ app.config(function($stateProvider,$urlRouterProvider){
             templateUrl:'templates/controlar.html',
             controller:'ControlarController'
           })
+          .state('secreto',{
+              templateUrl: 'templates/menuSecreto.html',
+              controller: 'SecretoController'
+          })
 
     $urlRouterProvider.otherwise('/menu');
 })
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform,$ionicLoading, $rootScope) {
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -52,6 +56,7 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    
   });
 
 })
