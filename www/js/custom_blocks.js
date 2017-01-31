@@ -53,3 +53,19 @@ Blockly.Blocks['movement_left'] = {
     this.setHelpUrl('http://guimo.toys');
   }
 };
+
+Blockly.Blocks['guimo_repeat'] = {
+  init: function() {
+    this.appendStatementInput("repeat")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Repita")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "times")
+        .appendField(" vez(es)");
+    this.setInputsInline(false);
+    this.setNextStatement(false, null);
+    this.setColour(20);
+    this.setTooltip('Repetir de 1 a 5 vezes');
+    this.setHelpUrl('');
+  }
+};

@@ -25,3 +25,17 @@ Blockly.JavaScript['movement_left'] = function(block) {
   var code = 'l\n,';
   return code;
 };
+
+Blockly.JavaScript['guimo_repeat'] = function(block) {
+  var dropdown_times = block.getFieldValue('times');
+  var statements_repeat = Blockly.JavaScript.statementToCode(block, 'repeat');
+  var branch = Blockly.JavaScript.statementToCode(block, 'repeat');
+  branch = Blockly.JavaScript.addLoopTrap(branch, block.id);
+  // TODO: Assemble JavaScript into code variable.
+  var code = branch;
+  code += dropdown_times+",";
+   // console.log(statements_repeat);
+  
+  //code += branch; 
+  return code;
+};

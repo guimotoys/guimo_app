@@ -2,12 +2,15 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
   $scope.codes;
 
   $ionicPlatform.ready(function(){
+      /** RESIZE EVENT TO LANDSCAPE SCREEN */
       window.addEventListener('resize', onresize, false);
 
+      /** BLOCKLY CONFIG DIVS */
       var blocklyArea = document.getElementById('blocklyArea');
       var blocklyDiv = document.getElementById('blocklyDiv');
       var workspace = Blockly.inject(blocklyDiv, {toolbox: document.getElementById('toolbox')});
 
+      /** RESIZE SCREEN TO BLOCKLY */
       var onresize = function(e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
         var element = blocklyArea;
@@ -25,25 +28,62 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
         blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
       };
 
-      if(window.cordova){
-        screen.lockOrientation('landscape');
-
-        $scope.runCode = function(){
+      /** RUN BLOCKLY BLOCKS CODE */
+      $scope.runCode = function(){
+          //PEGA O WORKSPACE e CODIGO DO BLOCKLY
           var workspace = document.getElementById('BlocklyDiv');
           var code = Blockly.JavaScript.workspaceToCode(workspace);
+          //CONFIGURA CODIGO RECEBIDO
           $scope.codes = code.split(",");
+          $scope.codes.splice(-1,1);
+          //console.log($scope.codes);
           var i = 0;
           var tam = $scope.codes.length - 1;
+          var repeatQtd = parseInt($scope.codes[tam]);
+          
 
+          /** SE NAO FOR NaN (Not A Number) ENTÃO é REPEAT BLOCK */
+          if(!isNaN(repeatQtd)){
+              // console.log($scope.codes);
+             if($rootScope.connected){
 
-          $interval(function(){
-            if($rootScope.connected){
-              bluetoothSerial.write($scope.codes[i]);
-            }
-            i++;
-          },110,tam);
+                  /** INTERVALO INICIAL, QTD DE REPETIÇÕES*/
+                  $interval(function(){
+                    var k = 0;
+                     
+                     /** INTERVALO DE DENTRO, ENVIAR DADOS DENTRO DO ARRAY DE CODES */
+                    $interval(function(){
+                       var realcode = $scope.codes[k].split("  ");
+                       var realCodeTam = realcode.length;
+                       for(var m = 0; m < realCodeTam; m++){
+                         if(realcode[m] != ""){
+                           bluetoothSerial.write(realcode[m]);
+                          //console.log(realcode[m]);
+                         }
+                       }
+                      k++;
+                    },250,tam);
+
+                  },550,repeatQtd)
+                                   
+              }
+          }
+
+          
+          if(isNaN(repeatQtd)){
+            $interval(function(){
+              if($rootScope.connected){
+                //console.log($scope.codes[i]);
+                bluetoothSerial.write($scope.codes[i]);
+              }
+              i++;
+            },210,tam+1);
+          }
 
         };
+
+      if(window.cordova){
+        screen.lockOrientation('landscape');
 
       }
 

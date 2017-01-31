@@ -5,7 +5,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
     $scope.feeding = false;
     $scope.foodSelected = "";
     $scope.sick = false;
-    var telaFood = $rootScope.telaFood;
+    var tela = $rootScope.tela;
 
     /** RECEBE $rootScope.teste, DE GuimoController LINHA 22 */
     if($rootScope.teste != null){
@@ -14,7 +14,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
 
     $scope.feed = function(food,foodName,sound){
       $scope.foodSelected = foodName;
-      telaFood = $rootScope.telaFood;
+      tela = $rootScope.tela;
       /** NÃO ALIMENTA SE O GUIMO ESTIVER CHEIO **/ 
         /**ALIMENTA SE TIVER COM FOME **/
          /**CALCULA A SORTE DE DIMINUIR A VIDA **/
@@ -58,7 +58,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
            
           /** TROCA TELA PARA NORMAL E LIBERA ARQUIVOS DE AUDIO **/ 
           $timeout(function(){
-            bluetoothSerial.write(telaFood);
+            bluetoothSerial.write(tela);
             if(media instanceof Media){
               media.release();
             }
