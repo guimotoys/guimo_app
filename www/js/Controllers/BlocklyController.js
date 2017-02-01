@@ -57,14 +57,14 @@ app.controller('BlocklyController',function($scope,$rootScope,$ionicPlatform,$ti
                        var realCodeTam = realcode.length;
                        for(var m = 0; m < realCodeTam; m++){
                          if(realcode[m] != ""){
-                           bluetoothSerial.write(realcode[m]);
-                          //console.log(realcode[m]);
+                          bluetoothSerial.write(realcode[m]);
+                          console.log(realcode[m]);
                          }
                        }
                       k++;
-                    },250,tam);
+                    },350,tam);
 
-                  },550,repeatQtd)
+                  },750,repeatQtd)
                                    
               }
           }

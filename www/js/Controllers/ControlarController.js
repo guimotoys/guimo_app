@@ -1,5 +1,5 @@
-app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$ionicHistory,$interval,$timeout){
-
+app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$ionicHistory,$interval,$timeout, $state){
+    var interval;
 
     $ionicPlatform.ready(function(){
 
@@ -27,7 +27,7 @@ app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$
         stickRadius: 100
 			});
       
-			$interval(function(){
+			interval = $interval(function(){
         if(joystick.right()){
           bluetoothSerial.write('r\n');
         }
@@ -52,4 +52,9 @@ app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$
 			}, 550);
 
     });
+
+    $scope.back = function(page){
+       $interval.cancel(interval);
+       $state.go('menu');
+    }
 });

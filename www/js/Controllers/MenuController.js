@@ -7,8 +7,8 @@ app.controller('MenuController',function($scope,$rootScope,$ionicPlatform,$http,
         screen.lockOrientation('portrait');
         if(navigator.connection.type != "none" || navigator.connection.type != "unknown" );
         {
-          console.log(navigator.connection.type);
-          navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+          //console.log(navigator.connection.type);
+          //navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
         }
         window.addEventListener('resize', onresize, false);
       }

@@ -40,19 +40,19 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
            /** TOCA PRIMEIRO SOM APÓS 1.1 SEGUNDOS */
             $timeout(function(){
               media.play();
-            },1100);
+            },1400);
 
             /** TOCA SEGUNDO SOM APÓS 2.2 SEGUNDOS  */
             $timeout(function(){
               if(sound == "Bite3"){
                 media.play();
               }
-            },2200);
+            },2500);
 
             if(sound == "Slurp7"){
               $timeout(function(){
                 belch.play();
-              },2600);
+              },2900);
             }
            }
            
@@ -133,10 +133,10 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
           bluetoothSerial.write('remedio\n');
         }
 
-        $ionicPopup.alert({
+        /*$ionicPopup.alert({
             title:'Guimo diz:',
             template: templ
-        });
+        });*/
 
         /** SE A SAUDE FICAR > QUE 30, VOLTA PRO NORMAL */
         if($rootScope.health >= 30){

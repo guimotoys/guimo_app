@@ -21,7 +21,8 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
         $scope.awsered = true;
         $scope.awser = $scope.awsers[rand];
         if($rootScope.connected){
-          bluetoothSerial.write('padrao\n');
+          console.log($rootScope.tela);         
+          bluetoothSerial.write($rootScope.tela);
         }
       },5000);
 
