@@ -1,15 +1,15 @@
 [![N|Solid](http://i.imgur.com/PXORtkB.jpg)](https://guimo.toys)
-# Guimo&trade; App V2
+# [Guimo&trade;] App V2
 
-## What is Guimo&trade;?
-Guimo is a modular smart toy, created to inspire children to live out-of-this-world experiences! It is a being from another planet, who was on an intergallactic mission when was hit by a meteor and fell on the Earth, losing parts of its pieces, programming and personality. The children's goal is to help Guimo recover its programming and mold its personality, by using our free app on a tablet or compatible smartphone.
+## What is [Guimo&trade;]?
+[Guimo&trade;] is a modular smart toy, created to inspire children to live out-of-this-world experiences! It is a being from another planet, who was on an intergallactic mission when was hit by a meteor and fell on the Earth, losing parts of its pieces, programming and personality. The children's goal is to help [Guimo&trade;] recover its programming and mold its personality, by using our free app on a tablet or compatible smartphone.
 
 [![N|Solid](http://i.imgur.com/hCm5tRC.png)](https://guimo.toys) [![N|Solid](http://i.imgur.com/CwIqAOV.jpg)](https://guimo.toys) 
 
 
 
-## What is the Guimo&trade; App?    
-Guimo App is the application used in cellphones to connect and play with guimo. With it, you can feed, talk and move the toy. **For now the app is only in the language PT-BR, but feel free to translate it into the language you need**
+## What is the [Guimo&trade;] App?    
+[Guimo&trade;] App is the application used in cellphones to connect and play with [Guimo&trade;]. With it, you can feed, talk and move the toy. **For now the app is only in the language PT-BR, but feel free to translate it into the language you need**
 
 The app is developed with the **ionic framework v1**,  with some plugins that will be listed below:
 
@@ -63,3 +63,4 @@ You should have received a copy of the GNU General Public License along with thi
 [Network Information]: <https://github.com/apache/cordova-plugin-network-information>
 [VirtualJoystick]: <https://github.com/jeromeetienne/virtualjoystick.js>
 [AnimateCss]: <https://daneden.github.io/animate.css/>
+[Guimo&trade;]: <https://guimo.toys>
