@@ -9,7 +9,8 @@ Guimo is a modular smart toy, created to inspire children to live out-of-this-wo
 
 
 ## What is the Guimo&trade; App?    
-Guimo App is the application used in cellphones to connect and play with guimo. With it, you can feed, talk and move the toy.
+Guimo App is the application used in cellphones to connect and play with guimo. With it, you can feed, talk and move the toy. **For now the app is only in the language PT-BR, but feel free to translate it into the language you need**
+
 The app is developed with the **ionic framework v1**,  with some plugins that will be listed below:
 
 * [Bluetooth-Serial] - This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino. 
