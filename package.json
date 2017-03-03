@@ -21,7 +21,18 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-bluetooth-serial"
+    "cordova-plugin-bluetooth-serial",
+    "cordova-plugin-screen-orientation",
+    "cordova-plugin-compat",
+    "cordova-plugin-media",
+    "cordova-plugin-file",
+    "cordova-plugin-network-information"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    }
+  ]
 }
