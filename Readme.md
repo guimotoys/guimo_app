@@ -33,6 +33,7 @@ After this, enter in the project folder and run this commands to install all plu
 
 ```sh
 $ cd guimo_app (the repo folder)
+$ bower install (to install virtualjoystick)
 $ ionic state restore
 ```
 **You will need the Android, IOS or WindowsPhone SDKs, depending on the platform used on your device.**
