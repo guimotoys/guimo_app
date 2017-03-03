@@ -1,16 +1,30 @@
-# Guimo App V2
+[![N|Solid](http://i.imgur.com/NMmpmEl.png)](https://guimo.toys)
+# Guimo&trade; App V2
 
+## What is Guimo&trade;?
+Guimo is a modular smart toy, created to inspire children to live out-of-this-world experiences! It is a being from another planet, who was on an intergallactic mission when was hit by a meteor and fell on the Earth, losing parts of its pieces, programming and personality. The children's goal is to help Guimo recover its programming and mold its personality, by using our free app on a tablet or compatible smartphone.
+
+[![N|Solid](http://i.imgur.com/hCm5tRC.png)](https://guimo.toys) [![N|Solid](http://i.imgur.com/CwIqAOV.jpg)](https://guimo.toys) 
+
+
+
+## What is the Guimo&trade; App?    
 Guimo App is the application used in cellphones to connect and play with guimo. With it, you can feed, talk and move the toy.
-
-The app is developed with the **ionic framework v1** with some plugins that will be listed below:
+The app is developed with the **ionic framework v1**,  with some plugins that will be listed below:
 
 * [Bluetooth-Serial] - This plugin enables serial communication over Bluetooth. It was written for communicating between Android or iOS and an Arduino. 
 * [Device] - Get device information.
 * [Screen Orientation] - Cordova plugin to set/lock the screen orientation
 * [Media] - This plugin provides the ability to record and play back audio files on a device
 * [Network Information]: Get information about wireless connectivity
+* [VirtualJoystick]: It is small library to emulate a virtual joystick for touchscreen
+* [AnimateCss]:  Just-add-water CSS animations
 
-# Instalation
+[![N|Solid](http://i.imgur.com/Y0XUina.png)](https://guimo.toys) [![N|Solid](http://i.imgur.com/ZbZa6XS.png)](https://guimo.toys) [![N|Solid](http://i.imgur.com/eEn4NdO.png)](https://guimo.toys)
+[![N|Solid](http://i.imgur.com/nul0FvS.png)](https://guimo.toys)
+
+
+## Instalation
 
 To install and use the app, you need the ionic framework installed in your computer. After install this component, you can clone this repo.
 
@@ -20,7 +34,7 @@ After this, enter in the project folder and run this commands to install all plu
 $ cd guimo_app (the repo folder)
 $ ionic state restore
 ```
-
+**You will need the Android, IOS or WindowsPhone SDKs, depending on the platform used on your device.**
 After this, you can add the platforms that you want to build:
 
 ```sh
@@ -28,25 +42,23 @@ $ ionic platform add <platform>
 $ ionic build <platform>
 $ ionic run <platform>
 ```
+**You should test the app in a native device, because some plugins need the device hardware to work (like Bluetooth)**
+## License
+[![N|Solid](http://farm2.static.flickr.com/1073/5122830971_04bdd362c4.jpg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-# License
-[![N|Solid](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.eu.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-**You are free to**
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material
-The licensor cannot revoke these freedoms as long as you follow the license terms.
-
-**Under the following terms**
-
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-- **NonCommercial** — You may not use the material for commercial purposes.
-- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
-- **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 [Bluetooth-Serial]: <https://github.com/don/BluetoothSerial>
 [Device]: <https://github.com/apache/cordova-plugin-device>
 [Screen Orientation]: <https://github.com/apache/cordova-plugin-screen-orientation>
 [Media]: <https://github.com/apache/cordova-plugin-media>
 [Network Information]: <https://github.com/apache/cordova-plugin-network-information>
+[VirtualJoystick]: <https://github.com/jeromeetienne/virtualjoystick.js>
+[AnimateCss]: <https://daneden.github.io/animate.css/>

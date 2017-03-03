@@ -5,7 +5,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
     $scope.feeding = false;
     $scope.foodSelected = "";
     $scope.sick = false;
-    var tela = $rootScope.tela;
+    var screen = $rootScope.screen;
 
     /** RECEBE $rootScope.teste, DE GuimoController LINHA 22 */
     if($rootScope.teste != null){
@@ -14,21 +14,20 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
 
     $scope.feed = function(food,foodName,sound){
       $scope.foodSelected = foodName;
-      tela = $rootScope.tela;
-      /** NÃO ALIMENTA SE O GUIMO ESTIVER CHEIO **/ 
-        /**ALIMENTA SE TIVER COM FOME **/
-         /**CALCULA A SORTE DE DIMINUIR A VIDA **/
+      screen = $rootScope.screen;
+      /** DO NOT FEED IF THE GUIMO IS FULL **/ 
+        /**FEEDS IF I HAVE HUNGRY **/
+         /** CALCULATE THE LUCK TO DECREASE LIFE **/
          var lucky = Math.floor(Math.random()*100)+1;
          var amt_feed =  20 //Math.floor(Math.random()*5)+1;
          
          if($rootScope.connected ){
 
-           /** VARIAVEIS DE ARQUIVOS DE ÁUDIO */
+           /** VARIABLES OF AUDIO FILES */
            var media = null;
            var belch = new Media('/android_asset/www/sound_effects/belch2.mp3');
-           //console.log('entrou Alimentar'+food);
 
-           /** ENVIA ALIMENTO PARA GUIMO */
+           /** SEND FOOD TO GUIMO */
            bluetoothSerial.write(food);
            if(sound != null){
              media = new Media("/android_asset/www/sound_effects/"+sound+".mp3",function(){
@@ -37,12 +36,12 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
               console.log(err)
             });
            
-           /** TOCA PRIMEIRO SOM APÓS 1.1 SEGUNDOS */
+           /** TONE FIRST SOUND AFTER 1.1 SECONDS */
             $timeout(function(){
               media.play();
             },1400);
 
-            /** TOCA SEGUNDO SOM APÓS 2.2 SEGUNDOS  */
+            /** TONE FIRST SOUND AFTER 2.2 SECONDS  */
             $timeout(function(){
               if(sound == "Bite3"){
                 media.play();
@@ -56,9 +55,9 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
             }
            }
            
-          /** TROCA TELA PARA NORMAL E LIBERA ARQUIVOS DE AUDIO **/ 
+          /** CHANGES screen for NORMAL AND FREE AUDIO FILES **/ 
           $timeout(function(){
-            bluetoothSerial.write(tela);
+            bluetoothSerial.write(screen);
             if(media instanceof Media){
               media.release();
             }
@@ -77,16 +76,16 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
           });
          }
 
-         /** SE ALIMENTAÇÃO FICAR > QUE 100 NÃO DEIXA SUBIR */
+         /** IF FOOD STAY > THAT 100, DOES NOT LET UP */
          if($rootScope.hunger + amt_feed >= 100){
            $rootScope.hunger = 100;
          }else{
            $rootScope.hunger += amt_feed;
          }
 
-         /**SE A SORTE FOR ENTRE 40 a 60, DIMINUI SAUDE**/
+         /**IF THE LUCK IS BETWEEN 40 TO 60, DIMINISH HEATH **/
          if(lucky >= 35 && lucky <= 80){
-            /** SE SAUDE > 25, PERDE 2 de VIDA **/
+            /** IF HEALTH > 25, LOSE 2 OF LIFE **/
             if($rootScope.health > 25){
                 $rootScope.health -= amt_feed;
 
@@ -97,10 +96,10 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
                   template: 'Esses '+foodName+'s não me cairam bem.... =/'
               });
 
-              /** SE GUIMO FICAR DOENTE ALTERAR VALOR DE VARIAVEL */
+              /** IF I'M SICK TO CHANGE VALUE OF VARIABLE */
               if(!$scope.sick){
                 $scope.sick = true;
-                //Seta a variavel para dizer que o app já sabe que o guimo tá doente;
+                //Arrow to variable to say that the app already knows that guimo is sick;
                  
                 console.log("entrou guimoDoente");
                 bluetoothSerial.write('doente\n');
@@ -112,14 +111,14 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
        
     }
 
-    /** DAR REMÉDIO PARA O GUIMO */
+    /** GIVE REMEDY TO GUIMO */
     $scope.medkit = function(){
-      /** CALCULA % DE CURA de 25 A 100 */
+      /** CALCULATION% OF HEALING from 25 to 100 */
       var heal = Math.floor(Math.random()*75)+25;
       var templ = "";
 
       if($rootScope.health < 100){
-        /** SE CURAR + QUE 100% */
+        /** IF YOU CURE + THAT 100% */
         if($rootScope.health + heal > 100){
           $rootScope.health = 100;
           templ = "Ahhh esse remédio me curou totalmente, estou pronto para brincar denovo!!";
@@ -138,7 +137,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
             template: templ
         });*/
 
-        /** SE A SAUDE FICAR > QUE 30, VOLTA PRO NORMAL */
+        /** IF HEALTH TO BE > 30, GO BACK NORMAL */
         if($rootScope.health >= 30){
           $scope.sick = false;
           if($rootScope.connected){

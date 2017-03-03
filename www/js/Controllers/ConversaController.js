@@ -1,12 +1,12 @@
 app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$ionicHistory,$timeout){
-  $scope.awsers = ['Um','Dois','Três','Quatro','Cinco','Seis','Sete','Oito','Nove','Dez','Onze','Doze','Treze','Quatorze','Quinze'];
+ // $scope.awsers = ['One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen'];
   $ionicPlatform.ready(function(){
     $scope.awser = '';
     $scope.awsering = false;
     $scope.awsered = false;
 
 
-    $scope.conversar = function(min,max){
+    $scope.talk = function(min,max){
       $scope.awsering = true;
       //Enviar Comando Bluetooth Aqui //
       var rand = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -19,10 +19,10 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
       $timeout(function(){
         $scope.awsering = false;
         $scope.awsered = true;
-        $scope.awser = $scope.awsers[rand];
+       // $scope.awser = $scope.awsers[rand];
         if($rootScope.connected){
-          console.log($rootScope.tela);         
-          bluetoothSerial.write($rootScope.tela);
+          console.log($rootScope.screen);         
+          bluetoothSerial.write($rootScope.screen);
         }
       },5000);
 
@@ -32,7 +32,3 @@ app.controller('ConversaController',function($scope,$rootScope,$ionicPlatform,$i
   });
 });
 
-
-//0 1 2 3 4
-//5 6 7 8 9
-//10 11 12 13 14

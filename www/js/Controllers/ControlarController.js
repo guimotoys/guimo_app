@@ -6,7 +6,7 @@ app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$
       if(window.cordova){
         screen.lockOrientation('landscape');
 
-        $scope.buzinar = function(sound){
+        $scope.honk = function(sound){
           var media = new Media("/android_asset/www/sound_effects/"+sound+".mp3");
 
           media.play();

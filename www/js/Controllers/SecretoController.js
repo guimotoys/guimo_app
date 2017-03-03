@@ -16,11 +16,11 @@ app.controller('SecretoController',function($scope,$rootScope,$ionicPlatform,$ti
                 $rootScope.hunger = 12;
             }
 
-            if(value == "doente"){
+            if(value == "sick"){
                 $rootScope.health = 20;
             }
 
-            if(value == "tela"){
+            if(value == "screen"){
                 if(window.cordova){
                     bluetoothSerial.write("padrao\n");
                 }

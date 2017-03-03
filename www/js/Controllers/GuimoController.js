@@ -2,7 +2,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
   $scope.energia = 10;
   $rootScope.health = 100;
   $rootScope.hunger = 100;
-  $rootScope.tela = "padrao\n";
+  $rootScope.screen = "padrao\n";
   $scope.device = '';
   $rootScope.connected = false;
   $scope.connecting = false;
@@ -17,32 +17,32 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
     if(window.cordova){
 
-      /*INSCREVE PARA RECEBER DADOS DO BT **/
+      /*ENTER TO RECEIVE BT DATA **/
       bluetoothSerial.subscribe('\n', function(data){
        // $rootScope.teste = "Teste " + data;
-       //console.log(data);
+       
       });
 
-      /*SE BT NAO TIVER LIGADO, PEDE PARA LIGAR **/
+      /*IF BT HAS NOT TURNED ON, REQUEST TO CONNECT **/
       bluetoothSerial.isEnabled(function(){
         },function(){
           bluetoothSerial.enable();
       });
 
-      /**CONECTAR NO BT DO GUIMO **/
-      $scope.conectarBt = function(device_name){
+      /**CONNECT IN THE GUIMO BT **/
+      $scope.connectBt = function(device_name){
         $scope.connecting = true;
-        /* LISTA DEVICES PAREADOS **/
+        /* LIST PAIRED DEVICES **/
         bluetoothSerial.list(function(devices){
 
-          /** PROCURA PELO DEVICE DE NOME GUIMO **/
+          /** LOOKING FOR THE DEVICE OF GUIMO NAME **/
           devices.forEach(function(device) {
               if(device.name == device_name){
                 $scope.$apply(function(){$scope.device = device;});
               }
           });
 
-          /** CONECTA NO DEVICE GUIMO **/
+          /** CONNECT ON DEVICE GUIMO **/
           bluetoothSerial.connect($scope.device.address,function(){
               
               $scope.$apply(function(){
@@ -53,9 +53,9 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
                 $rootScope.connected = true;
               });       
 
-              /*SE BT JÁ TIVER CONECTADO, NÃO MOSTRA OPÇÃO DE CONECTAR */
+              /*IF BT HAS ALREADY CONNECTED, IT DOES NOT SHOW OPTION TO CONNECT */
               bluetoothSerial.isConnected(function(){
-                  aumentarFome();
+                  increateHunger();
 
                   checkGuimoStatus();
                   $rootScope.$apply(function(){$rootScope.connected = true});
@@ -70,7 +70,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
             $scope.$apply(function(){
               $scope.connecting = false;
             }); 
-             console.log("Nao Conectou: ", err);
+             console.log("Not Connected:  ", err);
               $rootScope.$apply(function(){
               $rootScope.connected = false;
             });
@@ -82,7 +82,7 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
 
     }
     
-    function aumentarFome(){
+    function increateHunger(){
       $interval(function(){
         if($rootScope.hunger > 1 ){
           $rootScope.hunger -= 2;
@@ -91,44 +91,44 @@ app.controller('GuimoController',function($scope,$rootScope,$ionicPlatform,$ioni
     }
 
     function checkGuimoStatus(){
-      console.log('entrou CheckStatus');
+      console.log('entered CheckStatus');
       $interval(function(){
                 if($rootScope.hunger <= 10 && $rootScope.health >= 26){
-                  if($rootScope.tela != "fome\n"){
-                    console.log('entrou comFome');  
-                    $rootScope.tela = "fome\n";
+                  if($rootScope.screen != "fome\n"){
+                    console.log('enter in Fome');  
+                    $rootScope.screen = "fome\n";
                     bluetoothSerial.write('fome\n');
                   }
                 }
 
                 if($rootScope.hunger < 10 && $rootScope.health < 26){
-                  if($rootScope.tela != "doente\n" ){
-                    console.log("entrou comFome&Doente");
-                    $rootScope.tela = "doente\n";
+                  if($rootScope.screen != "doente\n" ){
+                    console.log("enter in Hunger&Sick");
+                    $rootScope.screen = "doente\n";
                     bluetoothSerial.write("doente\n");
                   }
                 }
 
                 if($rootScope.hunger > 10 && $rootScope.health >= 26){
-                  if($rootScope.tela != "padrao\n"){
-                    console.log('entrou semFome');
-                    $rootScope.tela = "padrao\n";
+                  if($rootScope.screen != "padrao\n"){
+                    console.log('enter no Hunger');
+                    $rootScope.screen = "padrao\n";
                     bluetoothSerial.write("padrao\n")
                   }
                 }
 
                 if($rootScope.health >= 26 && $rootScope.hunger <= 10){
-                  if($rootScope.tela != "fome\n"){
-                    console.log("Entrou sóFome");
-                    $rootScope.tela = "fome\n";
+                  if($rootScope.screen != "fome\n"){
+                    console.log("enter only hunger");
+                    $rootScope.screen = "fome\n";
                     bluetoothSerial.write('fome\n');
                   }
                 }
 
                 if($rootScope.health < 26 && $rootScope.hunger > 10){
-                  if($rootScope.tela != "doente"){
-                    console.log("entrou sóDoente");
-                    $rootScope.tela = "doente\n";
+                  if($rootScope.screen != "doente"){
+                    console.log("enter only Sick");
+                    $rootScope.screen = "doente\n";
                     bluetoothSerial.write('doente\n');
                   }
                 }

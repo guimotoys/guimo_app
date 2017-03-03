@@ -4,7 +4,7 @@ app.controller('TelasController',function($scope,$rootScope,$ionicPlatform,$ioni
     $ionicPlatform.ready(function(){
 
       if(window.cordova){
-        $scope.trocaTela = function(tela){
+        $scope.changeScreen = function(tela){
             bluetoothSerial.write(tela);
         }
       }
