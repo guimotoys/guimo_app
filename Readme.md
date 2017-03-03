@@ -1,4 +1,4 @@
-[![N|Solid](http://i.imgur.com/NMmpmEl.png)](https://guimo.toys)
+[![N|Solid](http://i.imgur.com/PXORtkB.jpg)](https://guimo.toys)
 # Guimo&trade; App V2
 
 ## What is Guimo&trade;?
