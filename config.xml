@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="toys.guimo.guimov2" version="0.3.20" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Guimo v2</name>
-    <description>
-        Guimo
+    <description>
+        Guimo
     </description>
-    <author email="jorgedjr21@gmail.com" href="http://guimo.toys">      Guimo    </author>
+    <author email="jorgejunior@guimo.toys" href="https://guimo.toys">
+      Guimo
+    </author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
@@ -21,7 +23,6 @@
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <plugin name="cordova-plugin-device" spec="~1.1.2" />
-    <plugin name="cordova-plugin-console" spec="~1.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
     <plugin name="cordova-plugin-splashscreen" spec="~3.2.2" />
     <plugin name="cordova-plugin-statusbar" spec="~2.1.3" />
