@@ -49,7 +49,7 @@ app.controller('ControlarController',function($scope,$rootScope,$ionicPlatform,$
 					+ (joystick.up()	? ' up'		: '')
 					+ (joystick.left()	? ' left'	: '')
 					+ (joystick.down()	? ' down' 	: ''));
-			}, 550);
+			}, 250);
 
     });
 

@@ -1,12 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="toys.guimo.guimov2" version="0.3.20" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="toys.guimo.guimov2" version="0.3.25" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Guimo v2</name>
-    <description>
-        Guimo
-    </description>
-    <author email="jorgejunior@guimo.toys" href="https://guimo.toys">
-      Guimo
-    </author>
+    <description>Guimo</description>
+    <author email="jorgejunior@guimo.toys" href="https://guimo.toys"></author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />

@@ -21,7 +21,7 @@ app.controller('MenuController',function($scope,$rootScope,$ionicPlatform,$http,
       }
 
       $scope.alerta = function(cod){
-        alert(cod);
+        //alert(cod);
         console.log(cod);
       }
     });
