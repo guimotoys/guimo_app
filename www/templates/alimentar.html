@@ -30,6 +30,16 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col">
+        <div class="button-bar">
+          <a class="button button-outline button-royal" ng-click="feed('batata\n','Batatas','Bite3')"><img src="img/batata.png" alt="Batata" id="batata" /></a>
+          <a class="button button-outline button-royal" ng-click="feed('sorvete\n','Sorvete','Slurp7')"><img src="img/sorvete.png" alt="Sorvete" id="sorvete" /></a>
+          <a class="button button-outline button-royal" ng-click="feed('hotdog\n','HotDog','Bite3')"><img src="img/hotdog.png" alt="HotDog" id="hotdog" /></a>
+        </div>
+      </div>
+    </div>
+
     <div class="row" ng-show="health <= 25">
           <div class="col">
             <button class="button button-block button-assertive icon-left ion-medkit" ng-click="medkit()">
@@ -39,13 +49,13 @@
     </div>
 
     <!-- DEBUG DIVS -->
-    <div class="row">
+    <!--<div class="row">
       <div class="col">
           <p class="light text-center">
             {{foodSelected}}
           </p>
       </div>
-    </div>
+    </div>-->
     <!--DEBUG DIVS -->
 
     <div class="row">
@@ -53,8 +63,6 @@
           <img src="img/hamburguer.png" alt="Alimento" ng-show="feeding" />
       </div>
     </div>
-
-
-
+    
   </ion-content>
 </ion-pane>

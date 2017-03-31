@@ -16,7 +16,7 @@ app.controller('AlimentarController',function($scope,$rootScope,$ionicPlatform,$
       $scope.foodSelected = foodName;
       screen = $rootScope.screen;
       /** DO NOT FEED IF THE GUIMO IS FULL **/ 
-        /**FEEDS IF I HAVE HUNGRY **/
+        /**FEEDS IF HAVE HUNGRY **/
          /** CALCULATE THE LUCK TO DECREASE LIFE **/
          var lucky = Math.floor(Math.random()*100)+1;
          var amt_feed =  20 //Math.floor(Math.random()*5)+1;
